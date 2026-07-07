@@ -46,8 +46,25 @@ export const orderSchema = z.object({
     .min(1, "Your cart is empty."),
 });
 
+export const donationSchema = z.object({
+  name: z.string().min(2, "Please enter your full name."),
+  phone: z.string().min(6, "Please enter a valid phone number."),
+  email: z.string().email("Please enter a valid email address."),
+  country: z.string().min(1, "Please select your country."),
+  frequency: z.enum(["One Time", "Monthly", "Quarterly", "Yearly"]),
+  amount: z.number().min(1, "Please choose or enter a donation amount."),
+  currency: z.string(),
+  purpose: z.string().min(1, "Please select a donation purpose."),
+  region: z.enum(["international", "local"]),
+  paymentMethod: z.string().min(1, "Please select a payment method."),
+  anonymous: z.boolean().optional(),
+  coverFees: z.boolean().optional(),
+  receiveUpdates: z.boolean().optional(),
+});
+
 export type ContactInput = z.infer<typeof contactSchema>;
 export type VolunteerInput = z.infer<typeof volunteerSchema>;
 export type PrayerRequestInput = z.infer<typeof prayerRequestSchema>;
 export type NewsletterInput = z.infer<typeof newsletterSchema>;
 export type OrderInput = z.infer<typeof orderSchema>;
+export type DonationInput = z.infer<typeof donationSchema>;

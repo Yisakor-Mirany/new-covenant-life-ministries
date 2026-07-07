@@ -5,11 +5,13 @@ import { animate, useInView } from "framer-motion";
 
 export function AnimatedCounter({
   value,
+  prefix = "",
   suffix = "",
   duration = 1.8,
   className,
 }: {
   value: number;
+  prefix?: string;
   suffix?: string;
   duration?: number;
   className?: string;
@@ -30,6 +32,7 @@ export function AnimatedCounter({
 
   return (
     <span ref={ref} className={className}>
+      {prefix}
       {display.toLocaleString()}
       {suffix}
     </span>

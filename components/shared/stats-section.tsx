@@ -32,6 +32,7 @@ export function StatsSection({
             <Icon className={cn("h-6 w-6", variant === "light" ? "text-secondary" : "text-secondary")} />
             <AnimatedCounter
               value={stat.value}
+              prefix={stat.prefix}
               suffix={stat.suffix}
               className="font-display text-3xl font-bold sm:text-4xl"
             />

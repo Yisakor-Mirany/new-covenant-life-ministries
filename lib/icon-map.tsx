@@ -8,6 +8,13 @@ import {
   Church,
   Rocket,
   Map,
+  Gift,
+  Landmark,
+  Globe,
+  HandCoins,
+  CreditCard,
+  Wallet,
+  Smartphone,
   type LucideIcon,
 } from "lucide-react";
 
@@ -21,6 +28,13 @@ export const iconMap: Record<string, LucideIcon> = {
   Church,
   Rocket,
   Map,
+  Gift,
+  Landmark,
+  Globe,
+  HandCoins,
+  CreditCard,
+  Wallet,
+  Smartphone,
 };
 
 export function getIcon(name: string): LucideIcon {

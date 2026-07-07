@@ -29,7 +29,7 @@ export function CookieBanner() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 40 }}
-          className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/95 backdrop-blur-lg"
+          className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/95 backdrop-blur-lg print:hidden"
         >
           <div className="container-page flex flex-col items-center justify-between gap-4 py-5 sm:flex-row">
             <p className="text-center text-sm text-muted-foreground sm:text-left">

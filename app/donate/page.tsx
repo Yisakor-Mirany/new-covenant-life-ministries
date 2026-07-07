@@ -1,27 +1,31 @@
 import type { Metadata } from "next";
 
-import { PageHero } from "@/components/shared/page-hero";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { DonateOptions } from "@/components/donate/donate-options";
+import { DonationHero } from "@/components/donate/donation-hero";
+import { DonationPageContent } from "@/components/donate/donation-page-content";
+import { SecureBadges } from "@/components/donate/secure-badges";
+import { CampaignProgress } from "@/components/donate/campaign-progress";
+import { DonorTestimonialsSection } from "@/components/donate/donor-testimonials-section";
 import { OtherWays } from "@/components/donate/other-ways";
+import { DonationFaqSection } from "@/components/donate/donation-faq-section";
 
 export const metadata: Metadata = {
   title: "Donate",
   description:
-    "Give to New Covenant Life Ministries and fuel leadership training, marriage restoration, and youth empowerment.",
+    "Give to New Covenant Life Ministries and fuel leadership training, marriage restoration, and youth empowerment. Local Ethiopian and international payment options available.",
 };
 
 export default function DonatePage() {
   return (
     <>
-      <PageHero
-        eyebrow="Give Today"
-        title="Your Gift Multiplies Transformation"
-        description="Every gift trains a leader, restores a marriage, or empowers a young person to build a better future."
-      />
+      <DonationHero />
       <Breadcrumbs items={[{ label: "Donate" }]} />
-      <DonateOptions />
+      <DonationPageContent />
+      <SecureBadges />
+      <CampaignProgress />
+      <DonorTestimonialsSection />
       <OtherWays />
+      <DonationFaqSection />
     </>
   );
 }
