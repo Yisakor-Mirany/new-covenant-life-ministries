@@ -4,6 +4,7 @@ import { siteConfig } from "@/lib/constants";
 import { programs } from "@/data/programs";
 import { events } from "@/data/events";
 import { blogPosts } from "@/data/blog-posts";
+import { books } from "@/data/books";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -16,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/impact",
     "/events",
     "/resources",
+    "/books",
     "/get-involved",
     "/donate",
     "/contact",
@@ -49,5 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...programRoutes, ...eventRoutes, ...blogRoutes];
+  const bookRoutes = books.map((book) => ({
+    url: `${siteConfig.url}/books/${book.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...programRoutes, ...eventRoutes, ...blogRoutes, ...bookRoutes];
 }

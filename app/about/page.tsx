@@ -12,6 +12,7 @@ import { StatementOfFaith } from "@/components/about/statement-of-faith";
 import { FounderSection } from "@/components/about/founder-section";
 import { LeadershipGrid } from "@/components/about/leadership-grid";
 import { OrgStructure } from "@/components/about/org-structure";
+import { FundingModel } from "@/components/about/funding-model";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -45,6 +46,7 @@ export default function AboutPage() {
       <FounderSection />
       <LeadershipGrid />
       <OrgStructure />
+      <FundingModel />
 
       <section className="section-y">
         <div className="container-page flex flex-col items-center gap-6 text-center">

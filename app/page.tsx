@@ -4,6 +4,7 @@ import { FeaturedPrograms } from "@/components/home/featured-programs";
 import { VisionMissionValues } from "@/components/home/vision-mission-values";
 import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { LatestNews } from "@/components/home/latest-news";
+import { FeaturedBooksSection } from "@/components/home/featured-books-section";
 import { PartnersSection } from "@/components/home/partners-section";
 import { DonationCta } from "@/components/home/donation-cta";
 import { NewsletterSection } from "@/components/home/newsletter-section";
@@ -17,6 +18,7 @@ export default function Home() {
       <VisionMissionValues />
       <TestimonialsSection />
       <LatestNews />
+      <FeaturedBooksSection />
       <PartnersSection />
       <DonationCta />
       <NewsletterSection />

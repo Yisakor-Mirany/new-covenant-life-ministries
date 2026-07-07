@@ -75,6 +75,7 @@ export const NAV_LINKS = [
   { label: "Impact", href: "/impact" },
   { label: "Events", href: "/events" },
   { label: "Resources", href: "/resources" },
+  { label: "Bookstore", href: "/books" },
   {
     label: "Get Involved",
     href: "/get-involved",
@@ -102,6 +103,7 @@ export const FOOTER_LINKS = {
   ],
   resources: [
     { label: "Blog", href: "/resources" },
+    { label: "Bookstore", href: "/books" },
     { label: "Sermons & Teaching", href: "/resources#sermons" },
     { label: "Downloads", href: "/resources#downloads" },
     { label: "Events", href: "/events" },
