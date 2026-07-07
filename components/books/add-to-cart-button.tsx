@@ -1,34 +1,61 @@
 "use client";
 
 import * as React from "react";
-import { ShoppingCart } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Minus, Plus, ShoppingCart, Zap } from "lucide-react";
 import { toast } from "sonner";
 
 import type { Book } from "@/types";
-import { formatCurrency } from "@/lib/utils";
+import { getBookAvailability } from "@/data/books";
+import { formatCurrency, cn } from "@/lib/utils";
 import { useCart } from "@/providers/cart-provider";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
-export function AddToCartButton({ book, className }: { book: Book; className?: string }) {
+export function AddToCartButton({
+  book,
+  className,
+  showBuyNow = true,
+  showQuantity = true,
+}: {
+  book: Book;
+  className?: string;
+  showBuyNow?: boolean;
+  showQuantity?: boolean;
+}) {
+  const router = useRouter();
   const { addItem } = useCart();
   const hasBoth = book.format === "Both";
   const [selected, setSelected] = React.useState<"Paperback" | "Digital Download">(
     hasBoth || book.format === "Paperback" ? "Paperback" : "Digital Download"
   );
+  const [quantity, setQuantity] = React.useState(1);
+
+  const availability = getBookAvailability(book);
+  const outOfStock = availability === "Out of Stock";
+  const isPreorder = availability === "Preorder";
 
   const price = selected === "Digital Download" ? book.digitalPrice ?? book.price : book.price;
 
   function handleAdd() {
-    addItem({
-      slug: book.slug,
-      title: book.title,
-      author: book.author,
-      format: selected,
-      price,
-      coverGradient: book.coverGradient,
-    });
-    toast.success(`Added "${book.title}" (${selected}) to your cart.`);
+    addItem(
+      {
+        slug: book.slug,
+        title: book.title,
+        author: book.author,
+        format: selected,
+        price,
+        coverGradient: book.coverGradient,
+      },
+      quantity
+    );
+    toast.success(
+      `Added ${quantity} × "${book.title}" (${selected}) to your cart${isPreorder ? " — preorder" : ""}.`
+    );
+  }
+
+  function handleBuyNow() {
+    handleAdd();
+    router.push("/books/checkout");
   }
 
   return (
@@ -52,12 +79,41 @@ export function AddToCartButton({ book, className }: { book: Book; className?: s
           ))}
         </div>
       )}
-      <div className="flex items-center gap-4">
+      <div className="flex flex-wrap items-center gap-4">
         <p className="font-display text-2xl font-bold text-primary">{formatCurrency(price)}</p>
-        <Button onClick={handleAdd} size="lg">
-          <ShoppingCart className="h-4 w-4" /> Add to Cart
-        </Button>
+        {showQuantity && (
+          <div className="inline-flex items-center gap-2 rounded-full border border-input px-1.5 py-1">
+            <button
+              type="button"
+              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+              aria-label="Decrease quantity"
+              className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-muted"
+            >
+              <Minus className="h-3.5 w-3.5" />
+            </button>
+            <span className="w-5 text-center text-sm font-medium">{quantity}</span>
+            <button
+              type="button"
+              onClick={() => setQuantity((q) => q + 1)}
+              aria-label="Increase quantity"
+              className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-muted"
+            >
+              <Plus className="h-3.5 w-3.5" />
+            </button>
+          </div>
+        )}
       </div>
+      <div className="flex flex-wrap gap-3">
+        <Button onClick={handleAdd} size="lg" disabled={outOfStock}>
+          <ShoppingCart className="h-4 w-4" /> {isPreorder ? "Preorder Now" : "Add to Cart"}
+        </Button>
+        {showBuyNow && (
+          <Button onClick={handleBuyNow} size="lg" variant="secondary" disabled={outOfStock}>
+            <Zap className="h-4 w-4" /> Buy Now
+          </Button>
+        )}
+      </div>
+      {outOfStock && <p className="text-sm text-destructive">Currently out of stock.</p>}
     </div>
   );
 }

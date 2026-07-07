@@ -2,6 +2,29 @@ import type { Book } from "@/types";
 
 export const books: Book[] = [
   {
+    slug: "spiritual-maturity",
+    title: "Spiritual Maturity",
+    titleAmharic: "ብስለት",
+    subtitle: "Preorder — Spiritual Maturity",
+    author: "Rev. Samuel Girma",
+    category: "Christian Living",
+    format: "Both",
+    price: 16.99,
+    digitalPrice: 9.99,
+    description:
+      "A forthcoming guide to growing beyond spiritual infancy into steady, fruitful maturity in Christ.",
+    longDescription:
+      "In Spiritual Maturity, Rev. Samuel Girma addresses one of the most overlooked questions in discipleship: not how do we get saved, but how do we grow up? Drawing on years of pastoral counsel, this forthcoming book maps the practical markers of spiritual maturity — steadfastness under pressure, discernment, humility, and fruitfulness — and offers a clear path for believers who feel stuck in spiritual adolescence. Available for preorder now; copies ship on release.",
+    coverGradient: "from-primary/80 via-secondary/60 to-primary/90",
+    featured: true,
+    availability: "Preorder",
+    releaseDate: "2026-11-01",
+    pages: 188,
+    publishedYear: 2026,
+    rating: 0,
+    reviews: [],
+  },
+  {
     slug: "the-weight-of-servant-leadership",
     title: "The Weight of Servant Leadership",
     author: "Rev. Samuel Girma",
@@ -103,6 +126,7 @@ export const books: Book[] = [
     longDescription:
       "This comprehensive manual equips certified facilitators to lead NCLM program cohorts with fidelity and excellence. Covers session planning, group facilitation skills, common challenges, and assessment tools. Required reading for all Facilitator Certification cohort participants.",
     coverGradient: "from-primary/70 via-secondary/60 to-accent/70",
+    newRelease: true,
     pages: 96,
     publishedYear: 2025,
     rating: 4.7,
@@ -265,6 +289,7 @@ export const books: Book[] = [
     longDescription:
       "Designed for busy households, The Family Devotional Guide offers 30 short, engaging devotions — each with a Scripture reading, reflection question, and prayer prompt suitable for children through adults. A favorite resource among NCLM's Marriage Ministry families.",
     coverGradient: "from-primary/60 via-secondary/50 to-primary/70",
+    newRelease: true,
     pages: 64,
     publishedYear: 2025,
     rating: 4.8,
@@ -307,14 +332,72 @@ export const books: Book[] = [
       },
     ],
   },
+  {
+    slug: "everyday-faith",
+    title: "Everyday Faith",
+    subtitle: "Living the Gospel at Work and Home",
+    author: "Rev. Samuel Girma",
+    category: "Christian Living",
+    format: "Both",
+    price: 13.99,
+    digitalPrice: 7.99,
+    description:
+      "Practical wisdom for living out your faith authentically in the ordinary rhythms of work, home, and community.",
+    longDescription:
+      "Everyday Faith closes the gap between Sunday worship and Monday morning. Rev. Samuel Girma offers grounded, practical reflections on integrity at work, patience at home, and generosity in community — proof that the gospel was never meant to stay inside church walls. A favorite gift for graduates and new believers alike.",
+    coverGradient: "from-accent/60 via-primary/50 to-secondary/60",
+    newRelease: true,
+    pages: 168,
+    publishedYear: 2025,
+    rating: 4.6,
+    reviews: [
+      {
+        name: "Betelhem N.",
+        rating: 5,
+        comment: "Short chapters that fit my morning commute and completely reshaped my week.",
+      },
+    ],
+  },
+  {
+    slug: "the-character-of-a-believer",
+    title: "The Character of a Believer",
+    author: "Dr. Hana Bekele",
+    category: "Christian Living",
+    format: "Paperback",
+    price: 12.99,
+    description:
+      "A study of the fruit of the Spirit and what it looks like to let Christ's character form your own.",
+    longDescription:
+      "The Character of a Believer walks through the fruit of the Spirit one quality at a time, pairing biblical exposition with honest reflection questions. Dr. Hana Bekele writes with the pastoral clarity of someone who has walked with believers through both failure and formation, making this an ideal resource for personal growth or small-group study.",
+    coverGradient: "from-secondary/60 via-accent/50 to-primary/60",
+    pages: 144,
+    publishedYear: 2023,
+    rating: 4.5,
+    reviews: [
+      {
+        name: "Meseret K.",
+        rating: 4,
+        comment: "Simple, convicting, and easy to use in a small group setting.",
+      },
+    ],
+  },
 ];
 
 export function getBookBySlug(slug: string) {
   return books.find((book) => book.slug === slug);
 }
 
+export function getHeroBook() {
+  return getBookBySlug("spiritual-maturity")!;
+}
+
+export function getBookAvailability(book: Book) {
+  return book.availability ?? "In Stock";
+}
+
 export const bookCategories: Book["category"][] = [
   "Leadership",
+  "Christian Living",
   "Youth Development",
   "Marriage & Family",
   "Training Manuals",

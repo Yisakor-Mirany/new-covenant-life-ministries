@@ -15,7 +15,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-muted/40">
+    <footer className="border-t border-border bg-muted/40 print:hidden">
       <div className="container-page py-16">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-6">
           <div className="col-span-2 sm:col-span-3 lg:col-span-2">

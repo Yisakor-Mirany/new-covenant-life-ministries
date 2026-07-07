@@ -13,6 +13,7 @@ import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { SearchDialog } from "@/components/layout/search-dialog";
 import { CartSheet } from "@/components/books/cart-sheet";
+import { WishlistSheet } from "@/components/books/wishlist-sheet";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -51,7 +52,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 w-full border-b transition-colors duration-300",
+        "sticky top-0 z-40 w-full border-b transition-colors duration-300 print:hidden",
         scrolled
           ? "border-border bg-background/90 backdrop-blur-lg shadow-sm"
           : "border-transparent bg-background/70 backdrop-blur-md"
@@ -125,6 +126,7 @@ export function Navbar() {
             <LanguageSwitcher />
             <ThemeToggle />
           </div>
+          <WishlistSheet />
           <CartSheet />
           <Button asChild size="default" variant="secondary" className="ml-1 hidden sm:inline-flex">
             <Link href="/donate">Donate</Link>
@@ -179,7 +181,8 @@ export function Navbar() {
                 <div className="flex items-center gap-1">
                   <LanguageSwitcher />
                   <ThemeToggle />
-                  <CartSheet />
+                  <WishlistSheet />
+          <CartSheet />
                 </div>
                 <Button asChild variant="secondary">
                   <Link href="/donate">Donate</Link>
