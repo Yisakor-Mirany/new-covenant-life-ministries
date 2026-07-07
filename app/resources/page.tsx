@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { BlogList } from "@/components/resources/blog-list";
 import { DownloadsSection } from "@/components/resources/downloads-section";
 import { SermonsSection } from "@/components/resources/sermons-section";
+import { BookstoreTeaser } from "@/components/resources/bookstore-teaser";
 import { FAQAccordion } from "@/components/shared/faq-accordion";
 
 export const metadata: Metadata = {
@@ -36,6 +37,7 @@ export default function ResourcesPage() {
 
       <SermonsSection />
       <DownloadsSection />
+      <BookstoreTeaser />
 
       <section className="section-y bg-muted/30">
         <div className="container-page">

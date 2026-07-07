@@ -88,3 +88,63 @@ export interface Cohort {
   format: string;
   seatsLeft: number;
 }
+
+export type BookCategory =
+  | "Leadership"
+  | "Youth Development"
+  | "Marriage & Family"
+  | "Training Manuals"
+  | "Bible Study";
+
+export type BookFormat = "Paperback" | "Digital Download" | "Both";
+
+export interface BookReview {
+  name: string;
+  rating: number;
+  comment: string;
+}
+
+export interface Book {
+  slug: string;
+  title: string;
+  author: string;
+  category: BookCategory;
+  format: BookFormat;
+  price: number;
+  digitalPrice?: number;
+  description: string;
+  longDescription: string;
+  coverGradient: string;
+  bestseller?: boolean;
+  featured?: boolean;
+  pages: number;
+  publishedYear: number;
+  rating: number;
+  reviews: BookReview[];
+}
+
+export interface Author {
+  name: string;
+  role: string;
+  bio: string;
+  initials: string;
+}
+
+export interface BookBundle {
+  slug: string;
+  title: string;
+  description: string;
+  bookSlugs: string[];
+  price: number;
+  donationIncluded: number;
+}
+
+export interface CartItem {
+  slug: string;
+  title: string;
+  author: string;
+  format: "Paperback" | "Digital Download" | "Bundle";
+  price: number;
+  quantity: number;
+  coverGradient: string;
+}

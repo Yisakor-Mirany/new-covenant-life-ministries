@@ -1,12 +1,13 @@
 import { programs } from "@/data/programs";
 import { events } from "@/data/events";
 import { blogPosts } from "@/data/blog-posts";
+import { books } from "@/data/books";
 
 export interface SearchEntry {
   title: string;
   description: string;
   href: string;
-  group: "Pages" | "Programs" | "Events" | "Resources";
+  group: "Pages" | "Programs" | "Events" | "Resources" | "Books";
 }
 
 const pages: SearchEntry[] = [
@@ -19,6 +20,7 @@ const pages: SearchEntry[] = [
   { title: "Impact", description: "Statistics, stories, and annual reports", href: "/impact", group: "Pages" },
   { title: "Events", description: "Upcoming conferences, retreats, and workshops", href: "/events", group: "Pages" },
   { title: "Resources", description: "Blog, teaching materials, downloads", href: "/resources", group: "Pages" },
+  { title: "Bookstore", description: "Books, manuals, and Bible studies from NCLM", href: "/books", group: "Pages" },
   { title: "Get Involved", description: "Volunteer, partner, mentor, sponsor", href: "/get-involved", group: "Pages" },
   { title: "Donate", description: "Fuel transformation across communities", href: "/donate", group: "Pages" },
   { title: "Contact", description: "Reach our team", href: "/contact", group: "Pages" },
@@ -45,9 +47,17 @@ const resourceEntries: SearchEntry[] = blogPosts.map((b) => ({
   group: "Resources",
 }));
 
+const bookEntries: SearchEntry[] = books.map((b) => ({
+  title: b.title,
+  description: b.description,
+  href: `/books/${b.slug}`,
+  group: "Books",
+}));
+
 export const searchIndex: SearchEntry[] = [
   ...pages,
   ...programEntries,
   ...eventEntries,
   ...resourceEntries,
+  ...bookEntries,
 ];

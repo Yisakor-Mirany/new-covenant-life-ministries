@@ -12,6 +12,7 @@ import { Logo } from "@/components/layout/logo";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { SearchDialog } from "@/components/layout/search-dialog";
+import { CartSheet } from "@/components/books/cart-sheet";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -124,6 +125,7 @@ export function Navbar() {
             <LanguageSwitcher />
             <ThemeToggle />
           </div>
+          <CartSheet />
           <Button asChild size="default" variant="secondary" className="ml-1 hidden sm:inline-flex">
             <Link href="/donate">Donate</Link>
           </Button>
@@ -177,6 +179,7 @@ export function Navbar() {
                 <div className="flex items-center gap-1">
                   <LanguageSwitcher />
                   <ThemeToggle />
+                  <CartSheet />
                 </div>
                 <Button asChild variant="secondary">
                   <Link href="/donate">Donate</Link>
